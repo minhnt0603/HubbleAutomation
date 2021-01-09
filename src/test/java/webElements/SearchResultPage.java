@@ -1,5 +1,6 @@
 package webElements;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,5 +33,14 @@ public class SearchResultPage {
                 trim().toUpperCase().matches("\"" + searchText.toUpperCase() + "\""));
         Assert.assertTrue(txtNoOfFoundItems.getText().replace("\"|\n","").
                 trim().matches(noOfFoundItems + " results have been found."));
+    }
+
+    public void openProduct(String productName) {
+        this.wait.until(ExpectedConditions.titleIs(SEARCH_RESULT_TITLE));
+        this.wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.xpath("//div[@class='product-container']//img[@title='"+ productName + "']")));
+        WebElement imgProduct = driver.findElement(
+                By.xpath("//div[@class='product-container']//img[@title='" + productName + "']"));
+        imgProduct.click();
     }
 }

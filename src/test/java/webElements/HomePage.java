@@ -20,6 +20,7 @@ public class HomePage {
 
     /** Capture all elements in Hubble Automation Home Page **/
     @FindBy(id = "search_query_top") WebElement txtSearch;
+    @FindBy(className = "login") WebElement btnSignin;
     @FindBy(how = How.XPATH, using = "//div[@id='block_top_menu']//a[@title='Women']") WebElement btnWomenCategory;
     @FindBy(how = How.XPATH, using = "//div[@id='block_top_menu']//a[@title='Dresses']") WebElement btnDressesCategory;
     @FindBy(how = How.XPATH, using = "//div[@id='block_top_menu']//a[@title='T-shirts']") WebElement btnTshirtsCategory;
@@ -41,6 +42,9 @@ public class HomePage {
         } else if (pageName.equalsIgnoreCase("t-shirts")) {
             this.wait.until(ExpectedConditions.elementToBeClickable(btnTshirtsCategory));
             btnTshirtsCategory.click();
+        } else if (pageName.equalsIgnoreCase("sign in")) {
+            this.wait.until(ExpectedConditions.elementToBeClickable(btnSignin));
+            btnSignin.click();
         }
     }
 }

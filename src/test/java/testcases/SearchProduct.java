@@ -28,6 +28,5 @@ public class SearchProduct extends TestBase {
 
         /** Step 3: Verify the search result */
         searchResultPage.verifySearchResult(SEARCH_TEXT, FOUND_ITEMS);
-
     }
 }
