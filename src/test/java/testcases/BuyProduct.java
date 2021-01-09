@@ -4,10 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import testbase.TestBase;
 import util.GlobalVariables;
-import webElements.HomePage;
-import webElements.ProductDetailsPage;
-import webElements.SearchResultPage;
-import webElements.SignInPage;
+import webElements.*;
 
 public class BuyProduct extends TestBase {
 
@@ -22,6 +19,7 @@ public class BuyProduct extends TestBase {
         /** Init Web elements in pages */
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         SignInPage signInPage = PageFactory.initElements(driver, SignInPage.class);
+        MyAccountPage myAccountPage = PageFactory.initElements(driver, MyAccountPage.class);
         SearchResultPage searchResultPage = PageFactory.initElements(driver, SearchResultPage.class);
         ProductDetailsPage productDetailsPage = PageFactory.initElements(driver, ProductDetailsPage.class);
 
@@ -32,7 +30,7 @@ public class BuyProduct extends TestBase {
         signInPage.signIn(GlobalVariables.EMAIL, GlobalVariables.PASSWORD);
 
         /** Step 3: Search for Product */
-        homePage.searchProduct(BLOUSE);
+        myAccountPage.searchProduct(BLOUSE);
 
         /** Step 4: Open Product Detail */
         searchResultPage.openProduct(BLOUSE);
