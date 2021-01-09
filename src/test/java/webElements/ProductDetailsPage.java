@@ -1,6 +1,7 @@
 package webElements;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +9,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
 
 public class ProductDetailsPage {
     WebDriver driver;
@@ -20,7 +23,7 @@ public class ProductDetailsPage {
 
     /** Capture all elements in Product Details Page **/
     @FindBy(id = "quantity_wanted") WebElement txtQuantity;
-    @FindBy(id = "group_1") WebElement drdSize;
+    @FindBy(how = How.XPATH, using = "//select[@id='group_1']") WebElement drdSize;
     @FindBy(how = How.XPATH, using = "//p[@id='add_to_cart']/button[@name='Submit']") WebElement btnAddtoCart;
     @FindBy(id = "color_to_pick_list") WebElement lblColorOptions;
 
@@ -29,13 +32,12 @@ public class ProductDetailsPage {
     public void selectQuantity(int quantity) {
         this.wait.until(ExpectedConditions.elementToBeClickable(txtQuantity));
         txtQuantity.sendKeys(String.valueOf(quantity));
+        txtQuantity.sendKeys(Keys.TAB);
     }
 
     public void selectSize(String size) {
-        this.wait.until(ExpectedConditions.visibilityOf(drdSize));
-        this.wait.until(ExpectedConditions.attributeContains(By.id("group_1"),"title",size));
         Select s_Size = new Select(drdSize);
-        s_Size.selectByValue(size);
+        s_Size.selectByVisibleText(size);
     }
 
     public void selectColor(String color) {
