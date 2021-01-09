@@ -18,13 +18,13 @@ public class WomenCategoryPage {
     }
 
     /**
-     * Capture all elements in Hubble Automation Home Page
+     * Capture all elements in Women Category Page
      **/
     @FindBy(id = "search_query_top")
     WebElement txtSearch;
 
     /**
-     * All actions on Home Page
+     * All actions on Women Category Page
      **/
     public void searchProduct(String searchText) {
         this.wait.until(ExpectedConditions.titleIs(WOMEN_CATEGORY_TITLE));
